@@ -26,4 +26,8 @@ public class AbstractComponents {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		wait.until(ExpectedConditions.visibilityOf(findEle));
 	}
+	public void waitForWebElementToBeClickable(WebElement clkElement) {
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));  // Wait for up to 10 seconds
+        wait.until(ExpectedConditions.elementToBeClickable(clkElement));  // Wait for the button to be clickable
+	}
 }

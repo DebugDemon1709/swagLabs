@@ -9,27 +9,16 @@ public class CheckoutPage extends AbstractComponents {
 	public CheckoutPage(WebDriver driver) {
 		super(driver);
 	}
-	@FindBy(name = "firstName")
-	WebElement firstName;
-	@FindBy(name = "lastName")
-	WebElement lastName;
-	@FindBy(name = "postalCode")
-	WebElement postalCode; 
-	@FindBy(id = "continue")
-	WebElement btnContinue;
-	@FindBy(id = "finish")
+
+	@FindBy(css = "#finish")
 	WebElement btnfinish;
 	
-	public void enterDetails(String fName, String lName, String pCode) {
-		firstName.sendKeys(fName);
-		lastName.sendKeys(lName);
-		postalCode.sendKeys(pCode);
-	}
-	public ConfirmationPage clickContinue() {
-		btnContinue.click();
+	public void clickFinish() {
+		waitForWebElementToBeClickable(btnfinish);
 		btnfinish.click();
+	}
+	
+	public ConfirmationPage goToConfirmationPage() {
 		return new ConfirmationPage(driver);
 	}
-	
-	
 }

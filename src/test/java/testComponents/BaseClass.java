@@ -25,8 +25,7 @@ public class BaseClass {
 	public WebDriver initializeDriver() throws IOException {
 
 		Properties properties = new Properties();
-		FileInputStream fileInputStream = new FileInputStream(
-				System.getProperty("user.dir") + "\\src\\test\\java\\utilities\\GlobalData.properties");
+		FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\java\\utilities\\GlobalData.properties");
 		properties.load(fileInputStream);
 		String browserName = properties.getProperty("browser");
 		if (browserName.equalsIgnoreCase("chrome")) {
@@ -37,6 +36,7 @@ public class BaseClass {
 			// edge browser code is here
 		}
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver;
 	}

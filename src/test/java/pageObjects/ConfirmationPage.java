@@ -15,5 +15,4 @@ public class ConfirmationPage extends AbstractComponents {
 	public String getConfirmationMesage() {
 		return confirmMsg.getText();
 	}
-
 }

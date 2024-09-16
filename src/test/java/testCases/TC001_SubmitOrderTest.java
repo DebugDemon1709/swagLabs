@@ -1,13 +1,12 @@
 package testCases;
 
-import java.util.List;
-
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import pageObjects.CartPage;
 import pageObjects.CheckoutPage;
+import pageObjects.ConfirmationPage;
+import pageObjects.InformationPage;
 import pageObjects.ProductCatalogue;
 import testComponents.BaseClass;
 
@@ -17,16 +16,29 @@ public class TC001_SubmitOrderTest extends BaseClass {
 	@Test
 	public void submitOrder() {
 		ProductCatalogue productCatalogue = landingPage.loginAplication("standard_user", "secret_sauce");
-		List<WebElement> products = productCatalogue.getProductList();
-		productCatalogue.addProductToCart(productName);
-		CartPage cartPage = productCatalogue.goToCartPage();
-		Boolean match = cartPage.verifyProductDisplay(productName);
-		Assert.assertTrue(match);
-		CheckoutPage checkoutPage = cartPage.goToCheckout();
 		
-		
-		
-		
-	}
+        // Get the list of products, add to cart desired product
+		productCatalogue.getProductList();
+        productCatalogue.addProductToCart(productName);
 
+        // Go to Cart Page and verify product
+        CartPage cartPage = productCatalogue.goToCartPage();
+        Boolean match = cartPage.verifyProductDisplay(productName);
+        Assert.assertTrue(match);
+
+        // Go to Information Page and enter random information
+        InformationPage informationPage = cartPage.goToInformationPage();
+        informationPage.enterRandomString();
+        informationPage.goToCheckoutPage();
+
+        // Go to Checkout Page and confirm order
+        CheckoutPage checkoutPage = informationPage.goToCheckoutPage();
+        checkoutPage.clickFinish();
+        checkoutPage.goToConfirmationPage();
+
+        // Get confirmation message
+        ConfirmationPage confirmationPage = checkoutPage.goToConfirmationPage();
+        String confirmationMessage = confirmationPage.getConfirmationMesage();
+        Assert.assertTrue(confirmationMessage.equalsIgnoreCase("Thank you for your order!"));    
+	}
 }

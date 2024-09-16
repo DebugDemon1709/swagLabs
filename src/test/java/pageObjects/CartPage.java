@@ -14,6 +14,8 @@ public class CartPage extends AbstractComponents {
 	
 	@FindBy(className = "inventory_item_name")
 	private List<WebElement> cartProducts;
+	@FindBy(css = "#checkout")
+	WebElement btnCheckout;
 	
 	
 	
@@ -21,9 +23,9 @@ public class CartPage extends AbstractComponents {
 		Boolean match = cartProducts.stream().anyMatch(product->product.getText().equalsIgnoreCase(productName));
 		return match;
 	}
-	
-
+	public InformationPage goToInformationPage() {
+		btnCheckout.click();
+		InformationPage informationPage = new InformationPage(driver);
+		return informationPage;
+	}
 }
-
-//List<WebElement> cartProducts = driver.findElements(By.className("inventory_item_name"));
-//boolean match = cartProducts.stream().anyMatch(cartProduct->cartProduct.getText().equalsIgnoreCase(productName));
