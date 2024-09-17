@@ -6,13 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class ConfirmationPage extends AbstractComponents {
 
-	public ConfirmationPage(WebDriver driver) {
-		super(driver);
-	}
-	@FindBy(css = ".complete-header")
-	WebElement confirmMsg;
-	
-	public String getConfirmationMesage() {
-		return confirmMsg.getText();
-	}
+    // Constructor to initialize WebDriver for the ConfirmationPage
+    public ConfirmationPage(WebDriver driver) {
+        super(driver);  // Call the parent class (AbstractComponents) constructor
+    }
+
+    // Web element for the confirmation message on the page
+    @FindBy(css = ".complete-header")
+    WebElement confirmMsg;  // Element that displays the confirmation message
+
+    // Method to get the text of the confirmation message
+    public String getConfirmationMesage() {
+        return confirmMsg.getText();  // Return the text of the confirmation message
+    }
 }

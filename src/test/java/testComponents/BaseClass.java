@@ -19,49 +19,84 @@ import org.testng.annotations.BeforeMethod;
 import pageObjects.LandingPage;
 
 public class BaseClass {
-	public WebDriver driver;
-	public LandingPage landingPage;
+    public WebDriver driver;
+    public LandingPage landingPage;
 
-	public WebDriver initializeDriver() throws IOException {
+    /**
+     * Initializes the WebDriver based on the browser specified in the properties file.
+     * @return WebDriver instance
+     * @throws IOException if there is an issue loading the properties file
+     */
+    public WebDriver initializeDriver() throws IOException {
+        // Load properties from the configuration file
+        Properties properties = new Properties();
+        FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\java\\utilities\\GlobalData.properties");
+        properties.load(fileInputStream);
+        
+        // Get the browser type from properties file
+        String browserName = properties.getProperty("browser");
+        
+        // Initialize WebDriver based on browser type
+        if (browserName.equalsIgnoreCase("chrome")) {
+            System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
+            driver = new ChromeDriver();
+        } else if (browserName.equalsIgnoreCase("edge")) {
+            // Code for initializing Edge WebDriver (if needed)
+        }
+        
+        // Configure WebDriver
+        driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        
+        return driver;
+    }
 
-		Properties properties = new Properties();
-		FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\java\\utilities\\GlobalData.properties");
-		properties.load(fileInputStream);
-		String browserName = properties.getProperty("browser");
-		if (browserName.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe");
-			driver = new ChromeDriver();
+    /**
+     * Takes a screenshot of the current browser window.
+     * @parameter1 testCaseName name of the test case for naming the screenshot file
+     * @parameter2 driver WebDriver instance
+     * @return path of the screenshot file
+     * @throws IOException if there is an issue saving the screenshot
+     */
+    public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
+        // Generate a timeStamp for the screenshot file name
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        
+        // Take a screenshot
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        
+        // Define the path and file name for the screenshot
+        String filePath = System.getProperty("user.dir") + "//screenshots//" + testCaseName + timeStamp + ".png";
+        File file = new File(filePath);
+        
+        // Save the screenshot to the defined path
+        FileUtils.copyFile(source, file);
+        
+        return filePath;
+    }
 
-		} else if (browserName.equalsIgnoreCase("edge")) {
-			// edge browser code is here
-		}
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return driver;
-	}
+    /**
+     * Sets up the test environment before each test method.
+     * @return LandingPage instance for interacting with the landing page
+     * @throws IOException if there is an issue initializing the WebDriver
+     */
+    @BeforeMethod(alwaysRun = true)
+    public LandingPage launchApplication() throws IOException {
+        driver = initializeDriver(); // Initialize WebDriver
+        landingPage = new LandingPage(driver); // Create a LandingPage instance
+        landingPage.goTo(); // Navigate to the application URL
+        return landingPage;
+    }
 
-	public String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
-		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File source = ts.getScreenshotAs(OutputType.FILE);
-		String filePath = System.getProperty("user.dir") + "//screenshots//" + testCaseName + timeStamp + ".png";
-		File file = new File(filePath);
-		FileUtils.copyFile(source, file);
-		return filePath;
-	}
-
-	@BeforeMethod(alwaysRun = true) // if we want to run in groups, we should mention (alwaysRun = true) for prerequisites
-	public LandingPage launchApplication() throws IOException {
-		driver = initializeDriver();
-		landingPage = new LandingPage(driver);
-		landingPage.goTo();
-		return landingPage;
-	}
-
-	@AfterMethod(alwaysRun = true) // if we want to run in groups, we should mention (alwaysRun = true) for postrequisites 
-	public void tearDown() {
-		driver.quit();
-	}
-
+    /**
+     * Cleans up the test environment after each test method.
+     */
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit(); // Close the browser and quit WebDriver
+        }
+    }
 }
