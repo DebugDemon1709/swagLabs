@@ -12,7 +12,7 @@ import testComponents.BaseClass;
 
 public class TC001_SubmitOrderTest extends BaseClass {
 	
-	String productName = "Sauce Labs Backpack";
+	String productName = getProductNameFromProperties();
 	@Test
 	public void submitOrder() {
 		// Go to LandingPage and Login

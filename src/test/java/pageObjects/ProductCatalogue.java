@@ -57,7 +57,7 @@ public class ProductCatalogue extends AbstractComponents {
         return cartPage;  // Return the CartPage object
     }
     public void logout() {
-    	btnOptions.click();
-    	btnLogout.click();
+    	btnOptions.click(); // Click on options
+    	btnLogout.click();  // Click on logout
     }
 }

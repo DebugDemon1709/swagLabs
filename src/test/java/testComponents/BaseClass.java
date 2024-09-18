@@ -52,6 +52,11 @@ public class BaseClass {
         
         return driver;
     }
+    
+    // Method to get productName from the properties file
+    public String getProductNameFromProperties() {
+        return properties.getProperty("productName");
+    }
 
     /**
      * Takes a screenshot of the current browser window.
@@ -102,8 +107,6 @@ public class BaseClass {
         return productCatalogue;  // Return the ProductCatalogue object
     }
     
-    
-
     /**
      * Cleans up the test environment after each test method.
      */
