@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-17T07:44:15 IST" name="Master_Suite" finished-at="2024-09-17T07:44:29 IST" duration-ms="14002">
+  <suite started-at="2024-09-18T15:58:30 IST" name="Master_Suite" finished-at="2024-09-18T15:58:41 IST" duration-ms="11242">
     <groups>
     </groups>
-    <test started-at="2024-09-17T07:44:15 IST" name="All_Test" finished-at="2024-09-17T07:44:29 IST" duration-ms="14002">
+    <test started-at="2024-09-18T15:58:30 IST" name="All_Test" finished-at="2024-09-18T15:58:41 IST" duration-ms="11242">
       <class name="testCases.TC002_ErrorValidationTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:testCases.TC002_ErrorValidationTest@4612b856]" started-at="2024-09-17T07:44:25 IST" name="launchApplication" finished-at="2024-09-17T07:44:28 IST" duration-ms="2481" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:testCases.TC002_ErrorValidationTest@5674e1f2]" started-at="2024-09-18T15:58:36 IST" name="launchApplication" finished-at="2024-09-18T15:58:38 IST" duration-ms="2015" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="errorValidation()[pri:0, instance:testCases.TC002_ErrorValidationTest@4612b856]" started-at="2024-09-17T07:44:28 IST" name="errorValidation" finished-at="2024-09-17T07:44:29 IST" duration-ms="1276" status="PASS">
+        <test-method signature="errorValidation()[pri:0, instance:testCases.TC002_ErrorValidationTest@5674e1f2]" started-at="2024-09-18T15:58:38 IST" name="errorValidation" finished-at="2024-09-18T15:58:39 IST" duration-ms="538" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- errorValidation -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.TC002_ErrorValidationTest@4612b856]" started-at="2024-09-17T07:44:29 IST" name="tearDown" finished-at="2024-09-17T07:44:29 IST" duration-ms="306" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.TC002_ErrorValidationTest@5674e1f2]" started-at="2024-09-18T15:58:39 IST" name="tearDown" finished-at="2024-09-18T15:58:39 IST" duration-ms="108" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testCases.TC002_ErrorValidationTest -->
       <class name="testCases.TC001_SubmitOrderTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:testCases.TC001_SubmitOrderTest@53dbe163]" started-at="2024-09-17T07:44:15 IST" name="launchApplication" finished-at="2024-09-17T07:44:20 IST" duration-ms="4953" status="PASS">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:testCases.TC001_SubmitOrderTest@34a875b3]" started-at="2024-09-18T15:58:30 IST" name="launchApplication" finished-at="2024-09-18T15:58:35 IST" duration-ms="4836" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="submitOrder()[pri:0, instance:testCases.TC001_SubmitOrderTest@53dbe163]" started-at="2024-09-17T07:44:20 IST" name="submitOrder" finished-at="2024-09-17T07:44:25 IST" duration-ms="4416" status="PASS">
+        <test-method signature="submitOrder()[pri:0, instance:testCases.TC001_SubmitOrderTest@34a875b3]" started-at="2024-09-18T15:58:35 IST" name="submitOrder" finished-at="2024-09-18T15:58:36 IST" duration-ms="1140" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.TC001_SubmitOrderTest@53dbe163]" started-at="2024-09-17T07:44:25 IST" name="tearDown" finished-at="2024-09-17T07:44:25 IST" duration-ms="369" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.TC001_SubmitOrderTest@34a875b3]" started-at="2024-09-18T15:58:36 IST" name="tearDown" finished-at="2024-09-18T15:58:36 IST" duration-ms="156" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
       </class> <!-- testCases.TC001_SubmitOrderTest -->
+      <class name="testCases.TC003_LogoutTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:testCases.TC003_LogoutTest@79c7532f]" started-at="2024-09-18T15:58:39 IST" name="launchApplication" finished-at="2024-09-18T15:58:41 IST" duration-ms="1739" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="verify_Logout()[pri:0, instance:testCases.TC003_LogoutTest@79c7532f]" started-at="2024-09-18T15:58:41 IST" name="verify_Logout" finished-at="2024-09-18T15:58:41 IST" duration-ms="523" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_Logout -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:testCases.TC003_LogoutTest@79c7532f]" started-at="2024-09-18T15:58:41 IST" name="tearDown" finished-at="2024-09-18T15:58:41 IST" duration-ms="129" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- testCases.TC003_LogoutTest -->
     </test> <!-- All_Test -->
   </suite> <!-- Master_Suite -->
 </testng-results>

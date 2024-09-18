@@ -101,6 +101,8 @@ public class BaseClass {
         ProductCatalogue productCatalogue = new ProductCatalogue(driver);
         return productCatalogue;  // Return the ProductCatalogue object
     }
+    
+    
 
     /**
      * Cleans up the test environment after each test method.

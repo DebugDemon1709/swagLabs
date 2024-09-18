@@ -16,6 +16,11 @@ public class ProductCatalogue extends AbstractComponents {
     // Web elements on the page defined using @FindBy annotation
     @FindBy(xpath = "//div[@class='inventory_item']")
     List<WebElement> products;  // List of all products available
+    
+    @FindBy(css = "#react-burger-menu-btn")
+    WebElement btnOptions;
+    @FindBy(css = "#logout_sidebar_link")
+    WebElement btnLogout;
 
     @FindBy(css = ".shopping_cart_link")
     WebElement cartHeader;  // Cart icon in the header
@@ -50,5 +55,9 @@ public class ProductCatalogue extends AbstractComponents {
         cartHeader.click();  // Click on the cart icon in the header
         CartPage cartPage = new CartPage(driver);  // Create an instance of the CartPage
         return cartPage;  // Return the CartPage object
+    }
+    public void logout() {
+    	btnOptions.click();
+    	btnLogout.click();
     }
 }

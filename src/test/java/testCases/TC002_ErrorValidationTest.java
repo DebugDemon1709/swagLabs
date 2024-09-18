@@ -13,7 +13,7 @@ public class TC002_ErrorValidationTest extends BaseClass {
 	@Test
 	public void errorValidation() {
 		// Go to LandingPage and Login
-		ProductCatalogue productCatalogue = BaseClass.loginAplication();
+		ProductCatalogue productCatalogue = BaseClass.loginAplication();  //from BaseClass
 
 		// Get the list of products, add to cart desired product
 		productCatalogue.getProductList();
