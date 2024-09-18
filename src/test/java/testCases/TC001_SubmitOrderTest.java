@@ -15,7 +15,8 @@ public class TC001_SubmitOrderTest extends BaseClass {
 	String productName = "Sauce Labs Backpack";
 	@Test
 	public void submitOrder() {
-		ProductCatalogue productCatalogue = landingPage.loginAplication("standard_user", "secret_sauce");
+		// Go to LandingPage and Login
+		ProductCatalogue productCatalogue = BaseClass.loginAplication();
 		
         // Get the list of products, add to cart desired product
 		productCatalogue.getProductList();

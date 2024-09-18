@@ -6,13 +6,11 @@
   </listeners>
   <test thread-count="5" name="All_Test(failed)">
     <classes>
-      <class name="testCases.TC001_SubmitOrderTest">
+      <class name="testCases.TC002_ErrorValidationTest">
         <methods>
-          <include name="submitOrder"/>
-          <include name="tearDown"/>
-          <include name="launchApplication"/>
+          <include name="errorValidation"/>
         </methods>
-      </class> <!-- testCases.TC001_SubmitOrderTest -->
+      </class> <!-- testCases.TC002_ErrorValidationTest -->
     </classes>
   </test> <!-- All_Test(failed) -->
 </suite> <!-- Failed suite [Master_Suite] -->

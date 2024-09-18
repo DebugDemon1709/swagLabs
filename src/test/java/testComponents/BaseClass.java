@@ -17,10 +17,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import pageObjects.LandingPage;
+import pageObjects.ProductCatalogue;
 
 public class BaseClass {
-    public WebDriver driver;
+    public static WebDriver driver;
     public LandingPage landingPage;
+    static Properties properties = new Properties();
 
     /**
      * Initializes the WebDriver based on the browser specified in the properties file.
@@ -29,7 +31,6 @@ public class BaseClass {
      */
     public WebDriver initializeDriver() throws IOException {
         // Load properties from the configuration file
-        Properties properties = new Properties();
         FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\java\\utilities\\GlobalData.properties");
         properties.load(fileInputStream);
         
@@ -88,6 +89,17 @@ public class BaseClass {
         landingPage = new LandingPage(driver); // Create a LandingPage instance
         landingPage.goTo(); // Navigate to the application URL
         return landingPage;
+    }
+    
+    public static ProductCatalogue loginAplication() {
+        LandingPage landingPage = new LandingPage(driver);
+        landingPage.userName.sendKeys(properties.getProperty("userName"));  // Enter the username
+        landingPage.password.sendKeys(properties.getProperty("password"));  // Enter the password
+        landingPage.btnSubmit.submit();  // Submit the login form
+
+        // Navigate to the product catalog page after successful login
+        ProductCatalogue productCatalogue = new ProductCatalogue(driver);
+        return productCatalogue;  // Return the ProductCatalogue object
     }
 
     /**
